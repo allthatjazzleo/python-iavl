@@ -91,7 +91,7 @@
               buildInputs = [ packages.iavl-env-leveldb ];
             };
             fix-discrepancies = pkgs.mkShell {
-              buildInputs = [ packages.iavl-env-leveldb packages.rocksdb-tool packages.iavl-cli iavl-fix-discrepancies-script.fix_discrepancies ];
+              buildInputs = [ packages.iavl-env-leveldb packages.rocksdb-tool iavl-fix-discrepancies-script.fix_discrepancies ];
             };
           };
         }
