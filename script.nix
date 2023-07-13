@@ -18,11 +18,9 @@ in {
     ls ${pythonScript}
     # [[ -z "$1" || -z "$2" ]] && echo "Usage: $0 <db path> <height> Error: missing db path or height" && exit 1
     which python3
-    echo ${iavl-env-leveldb}
-    echo ${iavl-cli-leveldb}
-    # echo ${iavl-cli-leveldb}/lib/python3.10/site-packages/
+    env
     ${iavl-env-leveldb}/bin/python3 -c "$(cat ${pythonScript})" $1
-    # hex_height=$(${iavl-env-leveldb}/bin/python3 ${pythonScript} $1)
+    ${iavl-env-leveldb}/bin/python3 ${pythonScript} $1
     echo $hex_height
     # ldb --db=$1 put "s/latest" $hex_height --value_hex
   '';
