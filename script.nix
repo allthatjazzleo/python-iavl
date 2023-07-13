@@ -20,7 +20,7 @@ in {
     which python3
     echo ${iavl-env-leveldb}
     echo ${iavl-cli-leveldb}
-    cd ${iavl-cli-leveldb}/lib/python3.10/site-packages/
+    # echo ${iavl-cli-leveldb}/lib/python3.10/site-packages/
     ${iavl-env-leveldb}/bin/python3 -c "$(cat ${pythonScript})" $1
     # hex_height=$(${iavl-env-leveldb}/bin/python3 ${pythonScript} $1)
     echo $hex_height
