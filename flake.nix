@@ -70,8 +70,8 @@
             iavl-cli = pkgs.callPackage iavl-cli { };
             iavl-cli-leveldb = pkgs.callPackage iavl-cli { groups = [ "leveldb" ]; };
             rocksdb-tool = pkgs.rocksdb-tool.tools;
-            iavl-fix-discrepancies-script = pkgs.callPackage ./script.nix { };
           };
+          iavl-fix-discrepancies-script = pkgs.callPackage ./script.nix { inherit (packages) iavl-env-leveldb; };
           defaultPackage = packages.iavl-cli;
           apps = {
             default = {
@@ -91,7 +91,7 @@
               buildInputs = [ packages.iavl-env-leveldb ];
             };
             fix-discrepancies = pkgs.mkShell {
-              buildInputs = [ packages.iavl-env-leveldb packages.rocksdb-tool packages.iavl-fix-discrepancies-script.fix_discrepancies ];
+              buildInputs = [ packages.iavl-env-leveldb packages.rocksdb-tool iavl-fix-discrepancies-script.fix_discrepancies ];
             };
           };
         }
